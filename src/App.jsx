@@ -1,11 +1,15 @@
 import { ItemListContainer, Navbar } from "./components"
-
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 export const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <ItemListContainer greeting={"Bienvenidos a Punto Padel! Paletas e indumentaria de élite para tu juego."} />
-    </>
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/category/:category" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemListContainer />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

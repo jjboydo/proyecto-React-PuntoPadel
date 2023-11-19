@@ -1,8 +1,26 @@
+import { useEffect, useState } from "react"
+import { ItemList } from "../ItemList/ItemList"
+import { useParams } from "react-router-dom"
+import { getProducts } from "../../asyncMock"
 
-export const ItemListContainer = ({ greeting }) => {
+export const ItemListContainer = () => {
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  const { category } = useParams()
+
+  useEffect(() => {
+    getProducts()
+      .then((resp) => {
+        setProducts(resp)
+        setIsLoading(false)
+      })
+      .catch((error) => console.log(error))
+  })
+
   return (
-    <div className="flex justify-center mt-16 font-titulo" > 
-        <h2 className="w-5/12 text-center text-xl sm:text-3xl xl:text-4xl  bg-primary rounded-3xl p-8 text-secondary"> { greeting } </h2>
-    </div>
+    <>
+      {isLoading ? <h2> Cargando productos... </h2> : <ItemList products={products} />}
+    </>
   )
 }
