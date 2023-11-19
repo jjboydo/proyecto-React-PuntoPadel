@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { CartWidget } from "../CartWidget/CartWidget"
 import { FaBars } from "react-icons/fa6";
 
@@ -13,10 +14,9 @@ export const Navbar = () => {
                 </div>
 
                 <ul className="md:flex md:text-[18px] md:space-x-8 lg:flex-1 items-center justify-center hidden px-4 lg:space-x-12 lg:text-[21px]">
-                    <li><a className="text-back hover:text-primary" href="#">Inicio</a></li>
-                    <li><a className="text-back hover:text-primary" href="#">Paletas</a></li>
-                    <li><a className="text-back hover:text-primary" href="#">Indumentaria</a></li>
-                    <li><a className="text-back hover:text-primary" href="#">Contacto</a></li>
+                    <li><NavLink to={"/"} className="text-back hover:text-primary">Inicio</NavLink></li>
+                    <li><NavLink to={"/category/paletas"} className="text-back hover:text-primary">Paletas</NavLink></li>
+                    <li><NavLink to={"/category/indumentaria"} className="text-back hover:text-primary">Indumentaria</NavLink></li>
                 </ul>
 
                 <CartWidget/>

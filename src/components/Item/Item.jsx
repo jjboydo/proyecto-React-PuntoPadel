@@ -5,7 +5,7 @@ export const Item = ({ id, name, img, description, category, price }) => {
         <div className="wrapper bg-gray-400 antialiased text-gray-900 w-1/3 grid place-items-center mt-10">
             <div>
 
-                <img src={img} alt="Imagen Producto" class="object-cover object-center rounded-lg shadow-xl w-96 h-[500px] border-[2px] border-secondary" />
+                <img src={img} alt="Imagen Producto" className="object-cover object-center rounded-lg shadow-xl w-96 h-[500px] border-[2px] border-secondary" />
 
                 <div className="relative px-4 -mt-16 w-96">
                     <div className="bg-secondary p-6 rounded-lg shadow-lg min-h-[307px] flex flex-col">
