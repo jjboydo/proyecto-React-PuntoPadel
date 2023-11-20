@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "../CartWidget/CartWidget"
 import { FaBars } from "react-icons/fa6";
 
@@ -6,11 +6,10 @@ export const Navbar = () => {
     return (
         <nav className="bg-accent w-full flex justify-between p-0 font-titulo">
             <div className="h-10vh flex md:justify-evenly justify-between lg:py-5 px-10 py-4 flex-1 w-screen">
-
                 <div className='flex items-center'>
-                    <a href="#">
+                    <Link to={"/"}>
                         <img className="h-8 xl:h-12 md:h-10" src="/img/logo-no-background.png" alt="logo" />
-                    </a>
+                    </Link>
                 </div>
 
                 <ul className="md:flex md:text-[18px] md:space-x-8 lg:flex-1 items-center justify-center hidden px-4 lg:space-x-12 lg:text-[21px]">

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
+import { Button } from "../Button/Button"
 
 export const Item = ({ id, name, img, description, category, price }) => {
     return (
-        <div className="wrapper bg-gray-400 antialiased text-gray-900 w-1/3 grid place-items-center mt-10">
+        <div className="wrapper bg-gray-400 antialiased text-gray-900 px-8 grid place-items-center mt-10">
             <div>
 
                 <img src={img} alt="Imagen Producto" className="object-cover object-center rounded-lg shadow-xl w-96 h-[500px] border-[2px] border-secondary" />
@@ -24,9 +25,7 @@ export const Item = ({ id, name, img, description, category, price }) => {
                             <span className="text-accent text-md font-semibold font-parrafo">{description}</span>
                         </div>
                         <Link to={`/item/${id}`}>
-                            <button className="bg-back rounded-md mt-4 before:ease relative h-12 w-40 overflow-hidden border border-accent shadow-2xl before:absolute before:left-0 before:-ml-2 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full before:translate-y-12 before:-rotate-90 before:bg-primary before:transition-all before:duration-300 hover:text-back hover:shadow-black hover:before:-rotate-180">
-                                <span className="relative z-10 font-titulo2 font-semibold text-md">Ver producto</span>
-                            </button>
+                            <Button content="Ver producto"/>
                         </Link>
                     </div>
                 </div>

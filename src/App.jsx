@@ -1,4 +1,4 @@
-import { ItemListContainer, Navbar } from "./components"
+import { ItemDetailContainer, ItemListContainer, Navbar } from "./components"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 export const App = () => {
@@ -8,7 +8,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/category/:category" element={<ItemListContainer />} />
-        <Route path="/item/:id" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
       </Routes>
     </BrowserRouter>
   )
