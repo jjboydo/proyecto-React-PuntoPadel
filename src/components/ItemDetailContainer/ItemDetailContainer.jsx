@@ -24,7 +24,7 @@ export const ItemDetailContainer = () => {
         <>
             {isLoading ? <div className="mx-auto flex flex-col justify-center items-center my-[20vh]">
                 <h2 className="text-accent text-[50px] font-titulo" > Punto Padel </h2>
-                <img class="w-20 h-20 animate-bounce" src="/img/punto-padel-favicon-color.svg" alt="Loading icon" />
+                <img className="w-20 h-20 animate-bounce" src="/img/punto-padel-favicon-color.svg" alt="Loading icon" />
                 <h2 className="text-accent text-[20px] font-titulo animate-pulse" > Cargando... </h2>
             </div> : item && <ItemDetail {...item} />}
         </>
