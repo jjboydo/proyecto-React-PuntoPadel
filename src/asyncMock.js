@@ -15,7 +15,7 @@ const products = [
       if (products.length > 0) {
         setTimeout(() => {
           resolve(products);
-        }, 2000);
+        }, 500);
       } else {
         reject("No hay productos");
       }
@@ -33,7 +33,7 @@ const products = [
             reject(`No se encuentra el producto con el id ${id}`)
           }
           resolve(product);
-        }, 2000);
+        }, 500);
       } else {
         reject("No hay productos");
       }

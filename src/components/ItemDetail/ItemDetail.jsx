@@ -53,7 +53,7 @@ export const ItemDetail = ({ id, name, img, description, category, stock, price 
                                 >
                                     Cantidad
                                 </label>
-                                <ItemCount stock={stock} onAdd={onAdd}/>
+                                <ItemCount stock={stock} item={{ id, name, img, description, category, price }}/>
                             </div>
 
                         </div>
