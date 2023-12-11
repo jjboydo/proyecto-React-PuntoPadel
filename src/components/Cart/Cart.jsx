@@ -15,7 +15,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { CartContext } from '../../context/CartContext'
-import { FaRegCircleXmark } from "react-icons/fa6"
+import { FaRegCircleXmark, FaRegTrashCan } from "react-icons/fa6"
 
 export const Cart = () => {
 
@@ -44,35 +44,40 @@ export const Cart = () => {
                         {cart.length == 0 ? <h2 className='text-center text-2xl font-titulo font-extrabold my-5 text-accent'>No hay prodcutos en el carrito</h2> :
                             cart.map((item) => (
                                 <Card
-                                    direction={{ base: 'column', sm: 'row' }}
+                                    direction={{ base: 'row', sm: 'row' }}
                                     overflow='hidden'
                                     variant='filled'
                                     key={item.id}
-                                    className='my-5'
+                                    className='my-5 !bg-secondary'
                                 >
                                     <Image
                                         objectFit='cover'
-                                        maxW={{ base: '100%', sm: '150px' }}
+                                        maxW={{ base: '0px', sm: '150px' }}
                                         src={item.img}
-                                        alt='Caffe Latte'
+                                        alt='Producto'
+                                        className='mix-blend-multiply'
                                     />
 
-                                    <Stack>
+                                    <Stack direction={['column', 'row']} w='full'>
                                         <CardBody>
-                                            <Heading size='md'>{item.name}</Heading>
+                                            <Heading size='md' className='!text-lg font-semibold uppercase leading-tight truncate whitespace-normal !font-titulo'>{item.name}</Heading>
 
-                                            <Text py='2'>
-                                                {item.price}
+                                            <Text py='2' className='font-titulo2 text-2xl font-bold text-accent'>
+                                                $ {item.price}
                                             </Text>
 
-                                            <Text py='2'>
+                                            <Text py='2' className='text-md font-semibold font-parrafo'>
                                                 Cantidad: {item.quantity}
+                                            </Text>
+
+                                            <Text py='2' className='font-semibold font-parrafo text-primary text-lg'>
+                                                Subtotal: $ {item.subtotal}
                                             </Text>
                                         </CardBody>
 
                                         <CardFooter>
-                                            <Button variant='solid' colorScheme='blue' onClick={() => removeItem(item.id)}>
-                                                Eliminar item
+                                            <Button variant='solid' colorScheme='red' onClick={() => removeItem(item.id)}>
+                                                <FaRegTrashCan />
                                             </Button>
                                         </CardFooter>
                                     </Stack>
