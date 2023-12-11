@@ -12,18 +12,26 @@ export const CartContextProvider = ({ children }) => {
     
     const addItem = (item, quantity) => {
         const { id, name, price, img } = item
-        // Debo evitar duplicados aqui, hacerlo cuando ya tenga los products en Firebase
 
-        const newItem = {
-            id,
-            name,
-            price,
-            img,
-            quantity,
-            subtotal: quantity * price,
+        if(isInCart(id)){
+            const cartCopy = [...cart]
+            const itemIndex = cart.findIndex(product => product.id === id) 
+            cartCopy[itemIndex].quantity += quantity
+            cartCopy[itemIndex].subtotal = cartCopy[itemIndex].quantity + cartCopy[itemIndex].price
+            setCart(cartCopy)
+        } else {
+            const newItem = {
+                id,
+                name,
+                price,
+                img,
+                quantity,
+                subtotal: quantity * price,
+            }
+    
+            setCart([...cart, newItem])
         }
 
-        setCart([...cart, newItem])
     }
 
     const removeItem = (itemId) => {

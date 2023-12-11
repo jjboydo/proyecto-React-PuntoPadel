@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
-import { ItemList } from "../ItemList/ItemList"
-import { useParams } from "react-router-dom"
-import { getProducts } from "../../asyncMock"
+import { useEffect, useState } from "react";
 import { FaCircleExclamation } from "react-icons/fa6";
+import { useParams } from "react-router-dom";
+import { ItemList } from "../ItemList/ItemList";
+import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../config/firebaseConfig";
 
 export const ItemListContainer = () => {
   const [products, setProducts] = useState([])
@@ -10,19 +11,32 @@ export const ItemListContainer = () => {
 
   const { category } = useParams()
 
-  useEffect(() => {
-    setIsLoading(true)
-    getProducts()
-      .then((response) => {
-        if (category) {
-          const prodFilter = response.filter((product) => product.category === category)
-          prodFilter.length > 0 ? setProducts(prodFilter) : setProducts([])
-        } else {
-          setProducts(response)
+  const getProducts = () => {
+    const myProducts = category
+      ? query(collection(db, "products"), where("category", "==", category))
+      : query(collection(db, "products"))
+    getDocs(myProducts)
+      .then((resp) => {
+        if (resp.size === 0) {
+          console.log("No hay productos cargados en la base de datos");
         }
+        const productList = resp.docs.map((doc) => {
+          const product = {
+            id: doc.id,
+            ...doc.data(),
+          };
+
+          return product;
+        })
+        setProducts(productList)
         setIsLoading(false)
       })
       .catch((error) => console.log(error))
+  }
+
+  useEffect(() => {
+    setIsLoading(true)
+    getProducts()
   }, [category])
 
   return (

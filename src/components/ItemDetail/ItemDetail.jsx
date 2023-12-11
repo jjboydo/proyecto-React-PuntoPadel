@@ -2,11 +2,7 @@ import { Link } from "react-router-dom"
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { ItemCount } from "../ItemCount/ItemCount";
 
-export const ItemDetail = ({ id, name, img, description, category, stock, price }) => {
-
-    const onAdd = (quantityToAdd) => { 
-        console.log(`${quantityToAdd} productos agregados al carrito`)
-    }
+export const ItemDetail = ({ id, name, img, description, category, stock, price, changes, setChanges }) => {
 
     return (
         <section className="overflow-hidden bg-white py-11 font-parrafo dark:bg-gray-800">
@@ -53,7 +49,7 @@ export const ItemDetail = ({ id, name, img, description, category, stock, price 
                                 >
                                     Cantidad
                                 </label>
-                                <ItemCount stock={stock} item={{ id, name, img, description, category, price }}/>
+                                <ItemCount stock={stock} item={{ id, name, img, description, category, price }} changes={changes} setChanges={setChanges} />
                             </div>
 
                         </div>

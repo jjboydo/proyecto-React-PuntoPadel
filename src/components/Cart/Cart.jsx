@@ -19,7 +19,7 @@ import { FaRegCircleXmark } from "react-icons/fa6"
 
 export const Cart = () => {
 
-    const { cart, removeItem, clearCart } = useContext(CartContext)
+    const { cart, removeItem, clearCart, cartTotal } = useContext(CartContext)
 
     const firstField = React.useRef()
 
@@ -87,6 +87,10 @@ export const Cart = () => {
                         </Link>
                     </DrawerFooter> :
                         <DrawerFooter borderTopWidth='1px'>
+                            <div className='flex flex-auto gap-9 items-center'>
+                                <Text className='text-2xl font-titulo2 font-bold'>Total del carrito:</Text>
+                                <Text className='text-3xl font-titulo2 font-bold'>${cartTotal}</Text>
+                            </div>
                             <Button variant='outline' mr={3} onClick={clearCart}>
                                 Vaciar carrito
                             </Button>

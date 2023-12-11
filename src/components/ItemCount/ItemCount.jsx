@@ -2,11 +2,19 @@ import { useContext } from "react";
 import { useCount } from "../../hooks/useCount";
 import { Button } from "../Button/Button";
 import { CartContext } from "../../context/CartContext";
+import { doc, updateDoc } from "firebase/firestore"
+import { db } from "../../config/firebaseConfig";
 
-export const ItemCount = ({ stock, initial = 1, item }) => {
+export const ItemCount = ({ stock, initial = 1, item, changes, setChanges }) => {
 
     const { count, increment, decrement } = useCount(initial, stock)
     const { addItem } = useContext(CartContext)
+
+    const discountStock = async (product, count) => {
+        const productRef = doc(db, "products", product.id);
+        await updateDoc(productRef, { stock: stock - count })
+        setChanges(!changes)
+    }
 
     return (
         <>
@@ -18,7 +26,10 @@ export const ItemCount = ({ stock, initial = 1, item }) => {
             <div className="flex items-center -mx-4 mt-7 w-full">
                 <div className="w-full px-4 mb-4 lg:mb-0">
                     <button className="bg-back rounded-md mt-4 before:ease relative h-12 w-full overflow-hidden border border-accent shadow-2xl before:absolute before:left-0 before:-ml-2 before:h-[500px] before:w-[150%] before:origin-top-right before:-translate-x-full before:translate-y-12 before:-rotate-90 before:bg-accent before:transition-all before:duration-300 hover:text-back hover:shadow-black hover:before:-rotate-180">
-                        <span className="relative z-10 font-titulo2 font-semibold text-md" onClick={() => addItem(item, count) } >Añadir al carrito</span>
+                        <span className="relative z-10 font-titulo2 font-semibold text-md" onClick={() => {
+                            addItem(item, count)
+                            discountStock(item, count)
+                        }} >Añadir al carrito</span>
                     </button>
                 </div>
             </div>
