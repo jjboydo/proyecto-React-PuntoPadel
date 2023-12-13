@@ -2,6 +2,7 @@ export * from './Button/Button';
 export * from './Cart/Cart';
 export * from './CartWidget/CartWidget';
 export * from './Checkout/Checkout';
+export * from './Form/Form';
 export * from './Item/Item';
 export * from './ItemCount/ItemCount';
 export * from './ItemDetail/ItemDetail';

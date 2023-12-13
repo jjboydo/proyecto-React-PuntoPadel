@@ -9,10 +9,11 @@ import React, { useContext } from 'react'
 import { FaRegCircleXmark } from "react-icons/fa6"
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
+import { Form } from '../Form/Form'
 
 export const Checkout = () => {
 
-    const { cart, cartTotal } = useContext(CartContext);
+    const { cart } = useContext(CartContext);
 
     const firstField = React.useRef()
     return (
@@ -25,7 +26,7 @@ export const Checkout = () => {
             <DrawerOverlay />
             <DrawerContent>
                 <Link to={"/"}>
-                    <FaRegCircleXmark size={25} className='absolute left-[97%] top-[3%] text-back' />
+                    <FaRegCircleXmark size={25} className='absolute left-[97%] top-[2%] text-back' />
                 </Link>
                 <DrawerHeader borderBottomWidth='1px' className='font-titulo bg-accent text-back'>
                     Descripción de tu compra:
@@ -50,7 +51,7 @@ export const Checkout = () => {
                                                     <tr key={item.id}>
                                                         <td className="py-3">
                                                             <div className="flex items-center">
-                                                                <img className="h-10 w-10 mr-4" src={item.img} alt="Producto" />
+                                                                <img className="h-10 w-10 mr-4 object-contain mix-blend-multiply" src={item.img} alt="Producto" />
                                                                 <span className="font-titulo2 font-semibold">{item.name}</span>
                                                             </div>
                                                         </td>
@@ -70,64 +71,7 @@ export const Checkout = () => {
                                 <div className="md:w-1/4">
                                     <div className="bg-back rounded-lg shadow-md p-6">
                                         <h2 className="text-lg font-semibold mb-4 font-titulo">Datos de contacto</h2>
-                                        <form className="max-w-sm mx-auto">
-                                            <div className="grid md:grid-cols-2 md:gap-6">
-                                                <div className="mb-5">
-                                                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-titulo2">
-                                                        Nombre
-                                                    </label>
-                                                    <input
-                                                        type="text"
-                                                        id="name"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-5">
-                                                    <label htmlFor="lastname" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-titulo2">
-                                                        Apellido
-                                                    </label>
-                                                    <input
-                                                        type="text"
-                                                        id="lastname"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                        required
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="mb-5">
-                                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-titulo2">
-                                                    Email
-                                                </label>
-                                                <input
-                                                    type="email"
-                                                    id="email"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 font-titulo2"
-                                                    placeholder="ejemplo@gmail.com"
-                                                    required
-                                                />
-                                            </div>
-                                            <div className="mb-5">
-                                                <label htmlFor="tel" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-titulo2">
-                                                    Teléfono
-                                                </label>
-                                                <input
-                                                    type="number"
-                                                    id="tel"
-                                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 font-titulo2"
-                                                    placeholder="3874845224"
-                                                    required
-                                                />
-                                            </div>
-                                            <hr className="my-2" />
-                                            <div className="flex justify-between mb-2">
-                                                <span className="font-semibold font-titulo2">Total de la compra:</span>
-                                                <span className="font-semibold font-titulo">$ {cartTotal}</span>
-                                            </div>
-                                            <button type="submit" className="bg-accent font-titulo text-back py-2 px-4 rounded-lg mt-4 w-full">
-                                                Finalizar compra
-                                            </button>
-                                        </form>
+                                        <Form/>
                                     </div>
                                 </div>
                             </div>

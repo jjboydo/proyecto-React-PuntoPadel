@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useToast } from '@chakra-ui/react'
 
 
 export const CartContext = createContext(null)
@@ -9,16 +10,42 @@ export const CartContextProvider = ({ children }) => {
     const [cartTotal, setCartTotal] = useState(0)
     const [cartQuantity, setCartQuantity] = useState(0)
 
-    
-    const addItem = (item, quantity) => {
-        const { id, name, price, img } = item
+    const toast = useToast()
 
-        if(isInCart(id)){
+    const addItem = (item, quantity) => {
+        const { id, name, price, img, stock } = item
+
+        if (isInCart(id)) {
             const cartCopy = [...cart]
-            const itemIndex = cart.findIndex(product => product.id === id) 
-            cartCopy[itemIndex].quantity += quantity
-            cartCopy[itemIndex].subtotal = cartCopy[itemIndex].quantity + cartCopy[itemIndex].price
-            setCart(cartCopy)
+            const itemIndex = cart.findIndex(product => product.id === id)
+            if (item.stock < (cartCopy[itemIndex].quantity + quantity)) {
+                toast({
+                    title: 'No hay mas stock para el producto seleccionado',
+                    status: 'error',
+                    duration: 2000,
+                    position: 'top-right',
+                    variant: 'left-accent',
+                    containerStyle: {
+                        paddingTop: '15%',
+                        fontSize: '20px'
+                    },
+                })
+            } else {
+                cartCopy[itemIndex].quantity += quantity
+                cartCopy[itemIndex].subtotal = cartCopy[itemIndex].quantity + cartCopy[itemIndex].price
+                setCart(cartCopy)
+                toast({
+                    title: 'Producto agregado al carrito',
+                    status: 'success',
+                    duration: 2000,
+                    position: 'top-right',
+                    variant: 'left-accent',
+                    containerStyle: {
+                        paddingTop: '20%',
+                        fontSize: '20px'
+                    },
+                })
+            }
         } else {
             const newItem = {
                 id,
@@ -26,10 +53,11 @@ export const CartContextProvider = ({ children }) => {
                 price,
                 img,
                 quantity,
+                stock,
                 subtotal: quantity * price,
             }
-    
-            setCart([...cart, newItem])
+            console.log(item.stock)
+            item.stock > 0 && setCart([...cart, newItem])
         }
 
     }
@@ -51,14 +79,14 @@ export const CartContextProvider = ({ children }) => {
         setCartTotal(cart.reduce((acum, item) => acum + item.subtotal, 0))
     }
 
-    const handleCartQuantity = () => { 
-        setCartQuantity(cart.reduce( (acum, item) => acum + item.quantity, 0))
+    const handleCartQuantity = () => {
+        setCartQuantity(cart.reduce((acum, item) => acum + item.quantity, 0))
     }
 
-    useEffect( () => { 
+    useEffect(() => {
         handleCartTotal();
         handleCartQuantity();
-    }, [cart] )
+    }, [cart])
 
     const valueObject = {
         cart,
