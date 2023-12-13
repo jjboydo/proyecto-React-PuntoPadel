@@ -15,7 +15,7 @@ export const ItemDetail = ({ id, name, img, description, category, stock, price,
             <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6 rounded-xl border border-secondary">
                 <div className="flex flex-wrap -mx-4">
                     <div className="w-full px-4 md:w-1/2 ">
-                        <div className="sticky top-0 z-50 overflow-hidden border-r border-secondary ">
+                        <div className="sticky top-0 z-50 overflow-hidden border-r border-secondary">
                             <div className="relative mb-6 lg:mb-10 lg:h-2/4 ">
                                 <img
                                     src={img}

@@ -32,7 +32,7 @@ export const CartContextProvider = ({ children }) => {
                 })
             } else {
                 cartCopy[itemIndex].quantity += quantity
-                cartCopy[itemIndex].subtotal = cartCopy[itemIndex].quantity + cartCopy[itemIndex].price
+                cartCopy[itemIndex].subtotal = cartCopy[itemIndex].quantity * cartCopy[itemIndex].price
                 setCart(cartCopy)
                 toast({
                     title: 'Producto agregado al carrito',

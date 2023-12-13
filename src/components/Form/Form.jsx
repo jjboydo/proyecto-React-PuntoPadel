@@ -3,6 +3,7 @@ import { CartContext } from '../../context/CartContext';
 import { addDoc, collection, doc, getDoc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebaseConfig';
 import { Alerts } from '../Alert/Alerts';
+import { useToast } from '@chakra-ui/react';
 
 export const Form = () => {
 
@@ -14,6 +15,7 @@ export const Form = () => {
     const [tel, setTel] = useState("")
     const [validation, setValidation] = useState(true)
     const [isFinished, setIsFinished] = useState(false)
+    const toast = useToast()
 
     const addOrder = (cartItems, userData, total) => {
         const newOrder = {
@@ -35,10 +37,19 @@ export const Form = () => {
             discountStock(cart)
             setName("")
             setEmail("")
+            setIsFinished(true)
         } else {
-            alert("Los mails no son iguales. Operacion cancelada")
+            toast({
+                title: 'Error! Los mails no coinciden. Por favor inserte los datos nuevamente',
+                status: 'error',
+                duration: 2000,
+                position: 'top',
+                variant: 'top-accent',
+                containerStyle: {
+                    fontSize: '20px'
+                },
+            })
         }
-        setIsFinished(true)
     }
 
     const discountStock = async (cartItems) => {

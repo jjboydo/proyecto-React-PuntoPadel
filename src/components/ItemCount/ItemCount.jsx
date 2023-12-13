@@ -2,13 +2,11 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useCount } from "../../hooks/useCount";
 import { Button } from "../Button/Button";
-import { useToast } from "@chakra-ui/react";
 
 export const ItemCount = ({ stock, initial = 1, item }) => {
 
     const { count, increment, decrement } = useCount(initial, stock)
     const { addItem } = useContext(CartContext)
-    const toast = useToast()
 
 
     return (
