@@ -34,9 +34,9 @@ export const Cart = () => {
                 <DrawerOverlay />
                 <DrawerContent>
                     <Link to={"/"}>
-                        <FaRegCircleXmark size={25} className='absolute left-[97%] top-[2%]' />
+                        <FaRegCircleXmark size={25} className='absolute left-[97%] top-[3%] text-back' />
                     </Link>
-                    <DrawerHeader borderBottomWidth='1px' className='font-titulo'>
+                    <DrawerHeader borderBottomWidth='1px' className='font-titulo bg-accent text-back'>
                         Carrito de compras
                     </DrawerHeader>
 
@@ -99,7 +99,9 @@ export const Cart = () => {
                             <Button variant='outline' mr={3} onClick={clearCart}>
                                 Vaciar carrito
                             </Button>
-                            <Button colorScheme='blue'>Finalizar compra</Button>
+                            <Link to={"/checkout"}>
+                                <Button colorScheme='blue'>Iniciar compra</Button>
+                            </Link>
                         </DrawerFooter>
                     }
                 </DrawerContent>
