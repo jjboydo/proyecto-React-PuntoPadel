@@ -31,6 +31,7 @@ export const Cart = () => {
                 initialFocusRef={firstField}
                 size={"full"}
                 overflow='scroll'
+                className="h-[100svh]"
             >
                 <DrawerOverlay />
                 <DrawerContent>
