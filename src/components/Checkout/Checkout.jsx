@@ -22,6 +22,7 @@ export const Checkout = () => {
             placement='top'
             initialFocusRef={firstField}
             size={"full"}
+            overflow='scroll'
         >
             <DrawerOverlay />
             <DrawerContent>
