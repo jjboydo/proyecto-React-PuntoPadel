@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../../config/firebaseConfig"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { Alerts } from "../Alert/Alerts"
 
 export const ItemDetailContainer = () => {
 
@@ -10,6 +11,7 @@ export const ItemDetailContainer = () => {
     const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
     const [changes, setChanges] = useState(true)
+    const [isInDB, setIsInDB] = useState(true)
 
     const getProductById = (id) => {
         const productQuery = doc(db, "products", id)
@@ -22,6 +24,8 @@ export const ItemDetailContainer = () => {
                     }
                     setItem(product)
                     setIsLoading(false)
+                } else {
+                    setIsInDB(false)
                 }
             })
             .catch((error) => console.log(error))
@@ -40,6 +44,7 @@ export const ItemDetailContainer = () => {
                 <img className="w-20 h-20 animate-bounce" src="/img/punto-padel-favicon-color.svg" alt="Loading icon" />
                 <h2 className="text-accent text-[20px] font-titulo animate-pulse" > Cargando... </h2>
             </div> : item && <ItemDetail {...item} changes={changes} setChanges={setChanges} />}
+            {!isInDB && <Alerts title={"Error"} status={"error"} message={"El producto que estás buscando no existe"} />}
         </>
     )
 }

@@ -34,13 +34,13 @@ export const Cart = () => {
                 <DrawerOverlay />
                 <DrawerContent>
                     <Link to={"/"}>
-                        <FaRegCircleXmark size={25} className='absolute left-[97%] top-[3%] text-back' />
+                        <FaRegCircleXmark size={25} className='absolute md:left-[95%] left-[90%] top-[2%] text-back' />
                     </Link>
                     <DrawerHeader borderBottomWidth='1px' className='font-titulo bg-accent text-back'>
                         Carrito de compras
                     </DrawerHeader>
 
-                    <DrawerBody>
+                    <DrawerBody overflow='scroll'>
                         {cart.length == 0 ? <h2 className='text-center text-2xl font-titulo font-extrabold my-5 text-accent'>No hay prodcutos en el carrito</h2> :
                             cart.map((item) => (
                                 <Card
@@ -91,8 +91,8 @@ export const Cart = () => {
                             <Button colorScheme='blue'>Volver a comprar</Button>
                         </Link>
                     </DrawerFooter> :
-                        <DrawerFooter borderTopWidth='1px'>
-                            <div className='flex flex-auto gap-9 items-center'>
+                        <DrawerFooter borderTopWidth='1px' className='flex-col gap-5 justify-center sm:flex-row sm:gap-0'>
+                            <div className='flex flex-auto gap-9 items-center flex-col sm:flex-row'>
                                 <Text className='text-2xl font-titulo2 font-bold'>Total del carrito:</Text>
                                 <Text className='text-3xl font-titulo2 font-bold'>${cartTotal}</Text>
                             </div>

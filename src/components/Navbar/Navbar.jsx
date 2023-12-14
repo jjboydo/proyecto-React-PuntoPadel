@@ -1,6 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "../CartWidget/CartWidget"
 import { FaBars } from "react-icons/fa6";
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuDivider,
+    IconButton,
+} from '@chakra-ui/react'
 
 export const Navbar = () => {
     return (
@@ -18,10 +29,28 @@ export const Navbar = () => {
                     <li><NavLink to={"/category/indumentaria"} className="text-back hover:text-primary">Indumentaria</NavLink></li>
                 </ul>
 
-                <CartWidget/>
+                <CartWidget />
 
                 <a className="navbar-burger self-center mr-12 md:hidden" href="#">
-                    <FaBars color="#DDEBF9" size={25}/>
+                    <Menu>
+                        <MenuButton
+                            as={IconButton}
+                            aria-label='Options'
+                            icon={<FaBars size={25} color="white" />}
+                            variant='filled'
+                        />
+                        <MenuList>
+                            <MenuItem >
+                                <NavLink to={"/"} className="text-accent hover:text-primary">Inicio</NavLink>
+                            </MenuItem>
+                            <MenuItem >
+                                <NavLink to={"/category/paletas"} className="text-accent hover:text-primary">Paletas</NavLink>
+                            </MenuItem>
+                            <MenuItem >
+                                <NavLink to={"/category/indumentaria"} className="text-accent hover:text-primary">Indumentaria</NavLink>
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
                 </a>
             </div>
         </nav>

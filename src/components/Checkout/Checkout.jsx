@@ -26,14 +26,14 @@ export const Checkout = () => {
             <DrawerOverlay />
             <DrawerContent>
                 <Link to={"/"}>
-                    <FaRegCircleXmark size={25} className='absolute left-[97%] top-[2%] text-back' />
+                    <FaRegCircleXmark size={25} className='absolute md:left-[95%] left-[90%] top-[2%] text-back' />
                 </Link>
                 <DrawerHeader borderBottomWidth='1px' className='font-titulo bg-accent text-back'>
                     Descripción de tu compra:
                 </DrawerHeader>
                 <DrawerBody>
                     <div className="bg-gray-100 h-screen py-8">
-                        <div className="container mx-auto px-4">
+                        <div className="container mx-auto sm:px-4">
                             <div className="flex flex-col md:flex-row gap-4">
                                 <div className="md:w-3/4">
                                     <div className="bg-back rounded-lg shadow-md p-6 mb-4">
@@ -51,8 +51,8 @@ export const Checkout = () => {
                                                     <tr key={item.id}>
                                                         <td className="py-3">
                                                             <div className="flex items-center">
-                                                                <img className="h-10 w-10 mr-4 object-contain mix-blend-multiply" src={item.img} alt="Producto" />
-                                                                <span className="font-titulo2 font-semibold">{item.name}</span>
+                                                                <img className="h-10 w-10 mr-4 object-contain mix-blend-multiply hidden sm:block" src={item.img} alt="Producto" />
+                                                                <span className="font-titulo2 font-semibold sm:w-full w-28">{item.name}</span>
                                                             </div>
                                                         </td>
                                                         <td className="py-3">$ {item.price}</td>

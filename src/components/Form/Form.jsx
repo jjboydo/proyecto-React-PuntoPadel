@@ -15,9 +15,10 @@ export const Form = () => {
     const [tel, setTel] = useState("")
     const [validation, setValidation] = useState(true)
     const [isFinished, setIsFinished] = useState(false)
+    const [orderId, setOrderId] = useState("")
     const toast = useToast()
 
-    const addOrder = (cartItems, userData, total) => {
+    const addOrder = async (cartItems, userData, total) => {
         const newOrder = {
             buyer: userData,
             items: cartItems,
@@ -25,7 +26,8 @@ export const Form = () => {
             total
         }
 
-        addDoc(collection(db, "orders"), newOrder)
+        const orderRef = await addDoc(collection(db, "orders"), newOrder)
+        setOrderId(orderRef.id)
         clearCart()
     }
 
@@ -154,7 +156,7 @@ export const Form = () => {
                     Finalizar compra
                 </button>
             </form>
-            { isFinished && (validation ? <Alerts title={"Compra realizada"} status={"success"} message={"La compra fue realizada con exito"} /> : <Alerts title={"Error en la compra"} status={"error"} message={"Los productos ya no estan disponibles"} />)}
+            { isFinished && (validation ? <Alerts title={"Compra realizada"} status={"success"} message={`La compra fue realizada con exito! El N° de órden es: ${orderId}`} /> : <Alerts title={"Error en la compra"} status={"error"} message={"Los productos ya no estan disponibles"} />)}
         </>
     )
 }
