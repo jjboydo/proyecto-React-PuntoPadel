@@ -1,6 +1,6 @@
 # Punto Padel
 
-![](/img/logo-no-background.png)
+![](public/img/logo-no-background.png)
 
 ## Descripción del Proyecto
 
@@ -40,13 +40,15 @@ Punto Padel es un ecommerce especializado en paletas e indumentaria de pádel. L
 
 ## Capturas de Pantalla
 
-![](/padel-app/public/img/Captura1.png)
-![](/padel-app/public/img/Captura2.png)
+![](public/img/Captura1.png)
+
+![](public/img/Captura2.png)
 
 Además, el sitio es responsive, lo cual permite a los usuarios acceder desde cualquier dispositivo
 
-![](/padel-app/public/img/Captura4.png)
-![](/padel-app/public/img/Captura3.png)
+![](public/img/Captura4.png)
+
+![](public/img/Captura3.png)
 
 ## Datos de Contacto
 
@@ -57,4 +59,5 @@ Para más información o preguntas, puedes ponerte en contacto:
 - **Redes Sociales:** [GitHub](https://github.com/jjboydo) | [LinkedIn](https://www.linkedin.com/in/juan-jos%C3%A9-boydo-a8a55024a/)
 
 Proyecto realizado en el curso #60995-React de CoderHouse.
+
 Profesor: Luis Alejandro Mera
