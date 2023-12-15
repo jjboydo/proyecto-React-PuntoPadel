@@ -12,7 +12,7 @@ export const ItemList = ({products}) => {
     categoryCopy = "paletas nacionales"
   } else if(categoryCopy == "paletasImp") {
     categoryCopy = "paletas imporatadas"
-  } else if(categoryCopy = "indumentaria") {
+  } else if(categoryCopy == "indumentaria") {
   } else {
     categoryCopy = "Productos"
   }

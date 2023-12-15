@@ -22,11 +22,9 @@ export const Checkout = () => {
             placement='top'
             initialFocusRef={firstField}
             size={"full"}
-            overflow='scroll'
-            maxH="100svh"
         >
             <DrawerOverlay />
-            <DrawerContent>
+            <DrawerContent maxH="100svh">
                 <Link to={"/"}>
                     <FaRegCircleXmark size={25} className='absolute md:left-[95%] left-[90%] top-[2%] text-back' />
                 </Link>
