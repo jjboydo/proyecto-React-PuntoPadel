@@ -1,6 +1,6 @@
 # Punto Padel
 
-![](/padel-app/public/img/logo-no-background.png)
+![](/img/logo-no-background.png)
 
 ## Descripción del Proyecto
 
