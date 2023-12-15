@@ -32,9 +32,9 @@ Punto Padel es un ecommerce especializado en paletas e indumentaria de pádel. L
 
 - React
 - React Router DOM
-- React Icons (para utilizar iconos de manera práctica en todo el sitio)
+- [React Icons](https://react-icons.github.io/react-icons/) (para utilizar iconos de manera práctica en todo el sitio)
 - Tailwind CSS
-- Chakra UI
+- [Chakra UI](https://chakra-ui.com/)
 - Node.js
 - Firebase
 
