@@ -3,7 +3,9 @@ import { RiArrowLeftSLine } from "react-icons/ri";
 import { ItemCount } from "../ItemCount/ItemCount";
 
 export const ItemDetail = ({ id, name, img, description, category, stock, price, changes, setChanges }) => {
-
+    if(category !== "indumentaria") {
+        category = "paleta"
+    }
     return (
         <section className="overflow-hidden bg-white py-11 font-parrafo dark:bg-gray-800">
             <div className="max-w-6xl px-4 mx-auto md:px-3 text-lg font-medium flex items-center gap-3 pb-5">

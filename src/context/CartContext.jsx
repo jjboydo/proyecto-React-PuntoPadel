@@ -56,7 +56,17 @@ export const CartContextProvider = ({ children }) => {
                 stock,
                 subtotal: quantity * price,
             }
-            console.log(item.stock)
+            toast({
+                title: 'Producto agregado al carrito',
+                status: 'success',
+                duration: 2000,
+                position: 'top-right',
+                variant: 'left-accent',
+                containerStyle: {
+                    paddingTop: '20%',
+                    fontSize: '20px'
+                },
+            })
             item.stock > 0 && setCart([...cart, newItem])
         }
 

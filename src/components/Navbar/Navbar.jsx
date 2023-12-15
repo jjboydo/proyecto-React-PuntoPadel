@@ -23,15 +23,16 @@ export const Navbar = () => {
                     </Link>
                 </div>
 
-                <ul className="md:flex md:text-[18px] md:space-x-8 lg:flex-1 items-center justify-center hidden px-4 lg:space-x-12 lg:text-[21px]">
+                <ul className="md:flex md:text-[12px] md:space-x-8 lg:flex-1 items-center justify-center hidden px-4 lg:space-x-12 lg:text-[18px] uppercase">
                     <li><NavLink to={"/"} className="text-back hover:text-primary">Inicio</NavLink></li>
-                    <li><NavLink to={"/category/paletas"} className="text-back hover:text-primary">Paletas</NavLink></li>
+                    <li><NavLink to={"/category/paletasNac"} className="text-back hover:text-primary">Paletas Nacionales</NavLink></li>
+                    <li><NavLink to={"/category/paletasImp"} className="text-back hover:text-primary">Paletas Importadas</NavLink></li>
                     <li><NavLink to={"/category/indumentaria"} className="text-back hover:text-primary">Indumentaria</NavLink></li>
                 </ul>
 
                 <CartWidget />
 
-                <a className="navbar-burger self-center mr-12 md:hidden" href="#">
+                <a className="navbar-burger self-center sm:mr-12 md:hidden" href="#">
                     <Menu>
                         <MenuButton
                             as={IconButton}
@@ -44,7 +45,10 @@ export const Navbar = () => {
                                 <NavLink to={"/"} className="text-accent hover:text-primary">Inicio</NavLink>
                             </MenuItem>
                             <MenuItem >
-                                <NavLink to={"/category/paletas"} className="text-accent hover:text-primary">Paletas</NavLink>
+                                <NavLink to={"/category/paletasNac"} className="text-accent hover:text-primary">Paletas Nacionales</NavLink>
+                            </MenuItem>
+                            <MenuItem >
+                                <NavLink to={"/category/paletasImp"} className="text-accent hover:text-primary">Paletas Importadas</NavLink>
                             </MenuItem>
                             <MenuItem >
                                 <NavLink to={"/category/indumentaria"} className="text-accent hover:text-primary">Indumentaria</NavLink>

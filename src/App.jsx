@@ -1,4 +1,4 @@
-import { Cart, Checkout, ItemDetailContainer, ItemListContainer, Navbar } from "./components"
+import { Cart, Checkout, Footer, ItemDetailContainer, ItemListContainer, Navbar } from "./components"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { CartContextProvider } from "./context/CartContext"
 

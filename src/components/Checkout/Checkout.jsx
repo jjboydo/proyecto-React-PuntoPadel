@@ -23,7 +23,7 @@ export const Checkout = () => {
             initialFocusRef={firstField}
             size={"full"}
             overflow='scroll'
-            className="h-[100svh]"
+            maxH="100svh"
         >
             <DrawerOverlay />
             <DrawerContent>
