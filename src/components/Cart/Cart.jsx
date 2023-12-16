@@ -21,14 +21,11 @@ export const Cart = () => {
 
     const { cart, removeItem, clearCart, cartTotal } = useContext(CartContext)
 
-    const firstField = React.useRef()
-
     return (
         <>
             <Drawer
                 isOpen={true}
                 placement='bottom'
-                initialFocusRef={firstField}
                 size={"full"}
                 overflow='scroll'
             >
@@ -87,11 +84,13 @@ export const Cart = () => {
                         }
                     </DrawerBody>
 
-                    {cart.length == 0 ? <DrawerFooter borderTopWidth='1px'>
-                        <Link to={"/"}>
-                            <Button colorScheme='blue'>Volver a comprar</Button>
-                        </Link>
-                    </DrawerFooter> :
+                    {cart.length == 0 ?
+                        <DrawerFooter borderTopWidth='1px'>
+                            <Link to={"/"}>
+                                <Button colorScheme='blue'>Volver a comprar</Button>
+                            </Link>
+                        </DrawerFooter>
+                        :
                         <DrawerFooter borderTopWidth='1px' className='flex-col gap-5 justify-center sm:flex-row sm:gap-0'>
                             <div className='flex flex-auto gap-9 items-center flex-col sm:flex-row'>
                                 <Text className='text-2xl font-titulo2 font-bold'>Total del carrito:</Text>

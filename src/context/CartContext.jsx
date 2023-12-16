@@ -26,7 +26,7 @@ export const CartContextProvider = ({ children }) => {
                     position: 'top-right',
                     variant: 'left-accent',
                     containerStyle: {
-                        paddingTop: '15%',
+                        marginTop: '15%',
                         fontSize: '20px'
                     },
                 })
@@ -37,11 +37,11 @@ export const CartContextProvider = ({ children }) => {
                 toast({
                     title: 'Producto agregado al carrito',
                     status: 'success',
-                    duration: 2000,
+                    duration: 1000,
                     position: 'top-right',
                     variant: 'left-accent',
                     containerStyle: {
-                        paddingTop: '20%',
+                        marginTop: '20%',
                         fontSize: '20px'
                     },
                 })

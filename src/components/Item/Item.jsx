@@ -2,9 +2,10 @@ import { Link } from "react-router-dom"
 import { Button } from "../Button/Button"
 
 export const Item = ({ id, name, img, description, category, price }) => {
-    if(category !== "indumentaria") {
-        category = "paleta"
-    }
+
+    // Ajusto los nombres de las paletas nacionales e importadas, a una sola categoria "paleta", solo para mostrar de mejor manera al renderizar
+    const adjustedCategory = category !== "indumentaria" ? "paleta" : category
+
     return (
         <div className="wrapper bg-gray-400 antialiased text-gray-900 px-8 grid place-items-center mt-10">
             <div>
@@ -15,7 +16,7 @@ export const Item = ({ id, name, img, description, category, price }) => {
                     <div className="bg-secondary p-6 rounded-lg shadow-lg min-h-[307px] flex flex-col">
                         <div className="flex items-baseline flex-1">
                             <div className="ml-1 text-gray-600 uppercase text-xs font-semibold tracking-wider text-primary font-parrafo">
-                                {category}
+                                {adjustedCategory}
                             </div>
                         </div>
 

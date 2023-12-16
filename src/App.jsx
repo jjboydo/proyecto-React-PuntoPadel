@@ -1,5 +1,5 @@
-import { Cart, Checkout, Footer, ItemDetailContainer, ItemListContainer, Navbar } from "./components"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Cart, Checkout, ItemDetailContainer, ItemListContainer, Navbar } from "./components"
 import { CartContextProvider } from "./context/CartContext"
 
 export const App = () => {

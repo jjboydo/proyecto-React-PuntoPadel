@@ -38,7 +38,10 @@ export const Form = () => {
             addOrder(cart, { name, lastname, email, tel }, cartTotal)
             discountStock(cart)
             setName("")
+            setLastname("")
             setEmail("")
+            setEmailVer("")
+            setTel("")
             setIsFinished(true)
         } else {
             toast({
@@ -65,7 +68,7 @@ export const Form = () => {
                         }
                         if (product.stock < 1 || product.stock < item.quantity) {
                             setValidation(false)
-                            return 
+                            return
                         }
                         updateDoc(doc(db, "products", item.id), { stock: product.stock - item.quantity })
                     }
@@ -156,7 +159,12 @@ export const Form = () => {
                     Finalizar compra
                 </button>
             </form>
-            { isFinished && (validation ? <Alerts title={"Compra realizada"} status={"success"} message={`La compra fue realizada con exito! El N° de órden es: ${orderId}`} /> : <Alerts title={"Error en la compra"} status={"error"} message={"Los productos ya no estan disponibles"} />)}
+            {isFinished &&
+                (validation ?
+                    <Alerts title={"Compra realizada"} status={"success"} message={`La compra fue realizada con exito! El N° de órden es: ${orderId}`} />
+                    :
+                    <Alerts title={"Error en la compra"} status={"error"} message={"Los productos ya no estan disponibles"} />)
+            }
         </>
     )
 }

@@ -2,10 +2,10 @@ import { Link } from "react-router-dom"
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { ItemCount } from "../ItemCount/ItemCount";
 
-export const ItemDetail = ({ id, name, img, description, category, stock, price, changes, setChanges }) => {
-    if(category !== "indumentaria") {
-        category = "paleta"
-    }
+export const ItemDetail = ({ id, name, img, description, category, stock, price }) => {
+
+    const adjustedCategory = category !== "indumentaria" ? "paleta" : category
+
     return (
         <section className="overflow-hidden bg-white py-11 font-parrafo dark:bg-gray-800">
             <div className="max-w-6xl px-4 mx-auto md:px-3 text-lg font-medium flex items-center gap-3 pb-5">
@@ -30,7 +30,7 @@ export const ItemDetail = ({ id, name, img, description, category, stock, price,
                     <div className="w-full px-4 md:w-1/2 mt-4">
                         <div className="lg:pl-10">
                             <div className="mb-8 ">
-                                <span className="text-lg font-medium text-primary uppercase">{category}</span>
+                                <span className="text-lg font-medium text-primary uppercase">{adjustedCategory}</span>
                                 <h2 className="max-w-xl mt-3 mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl font-titulo">
                                     {name}
                                 </h2>
@@ -51,9 +51,8 @@ export const ItemDetail = ({ id, name, img, description, category, stock, price,
                                 >
                                     Cantidad
                                 </label>
-                                <ItemCount stock={stock} item={{ id, name, img, description, category, price }} changes={changes} setChanges={setChanges} />
+                                <ItemCount stock={stock} item={{ id, name, img, description, category, price }} />
                             </div>
-
                         </div>
                     </div>
                 </div>

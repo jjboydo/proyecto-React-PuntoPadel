@@ -15,12 +15,10 @@ export const Checkout = () => {
 
     const { cart } = useContext(CartContext);
 
-    const firstField = React.useRef()
     return (
         <Drawer
             isOpen={true}
             placement='top'
-            initialFocusRef={firstField}
             size={"full"}
         >
             <DrawerOverlay />

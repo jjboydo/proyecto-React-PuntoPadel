@@ -12,4 +12,3 @@ export * from './ItemDetailContainer/ItemDetailContainer';
 export * from './ItemList/ItemList';
 export * from './ItemListContainer/ItemListContainer';
 export * from './Navbar/Navbar';
-export * from './Order/Order';

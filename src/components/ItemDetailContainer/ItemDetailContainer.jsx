@@ -10,7 +10,6 @@ export const ItemDetailContainer = () => {
     const [item, setItem] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
-    const [changes, setChanges] = useState(true)
     const [isInDB, setIsInDB] = useState(true)
 
     const getProductById = (id) => {
@@ -34,17 +33,23 @@ export const ItemDetailContainer = () => {
     useEffect(() => {
         setIsLoading(true)
         getProductById(id)
-    }, [changes])
+    }, [])
 
 
     return (
         <>
-            {isLoading ? <div className="mx-auto flex flex-col justify-center items-center my-[20vh]">
-                <h2 className="text-accent text-[50px] font-titulo" > Punto Padel </h2>
-                <img className="w-20 h-20 animate-bounce" src="/img/punto-padel-favicon-color.svg" alt="Loading icon" />
-                <h2 className="text-accent text-[20px] font-titulo animate-pulse" > Cargando... </h2>
-            </div> : item && <ItemDetail {...item} changes={changes} setChanges={setChanges} />}
-            {!isInDB && <Alerts title={"Error"} status={"error"} message={"El producto que estás buscando no existe"} />}
+            {isLoading ?
+                <div className="mx-auto flex flex-col justify-center items-center my-[20vh]">
+                    <h2 className="text-accent text-[50px] font-titulo" > Punto Padel </h2>
+                    <img className="w-20 h-20 animate-bounce" src="/img/punto-padel-favicon-color.svg" alt="Loading icon" />
+                    <h2 className="text-accent text-[20px] font-titulo animate-pulse" > Cargando... </h2>
+                </div>
+                :
+                item && <ItemDetail {...item} />
+            }
+            {!isInDB &&
+                <Alerts title={"Error"} status={"error"} message={"El producto que estás buscando no existe"} />
+            }
         </>
     )
 }
